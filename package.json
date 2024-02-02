@@ -1,8 +1,10 @@
 {
   "name": "groundup-design",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React component and utils library for Groundup",
-  "author": "Deepak",
+  "author": {
+    "name": "Deepak"
+  },
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -23,7 +25,9 @@
     "@storybook/react-webpack5": "^7.6.11",
     "@storybook/test": "^7.6.11",
     "babel-loader": "^9.1.3",
+    "chromatic": "^10.6.1",
     "lucide-react": "^0.320.0",
+    "moment": "^2.30.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -42,9 +46,13 @@
   },
   "scripts": {
     "sb": "storybook dev -p 6006",
-    "builds": "storybook build",
+    "build-storybook": "storybook build",
     "build": "rollup -c",
-    "pub": "npm publish"
+    "pub": "npm publish",
+    "chromatic": "npx chromatic --project-token=chpt_2964a96761e4665"
+  },
+  "resolutions": {
+    "jackspeak": "2.1.1"
   },
   "dependencies": {}
 }
