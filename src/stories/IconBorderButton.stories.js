@@ -1,9 +1,11 @@
-import Button from '../components/Button';
+import React from "react";
+import IconBorderButton from '../components/IconBorderButton';
+import GoogleIcon from './assets/google.svg';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: 'Components/Buttons/Button',
-  component: Button,
+  title: 'Components/Buttons/IconBorderButton',
+  component: IconBorderButton,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
@@ -16,7 +18,8 @@ export default {
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary = {
   args: {
-    text: "Press Me",
-    style: { width: 100 }
+  	renderIcon: () => <img src={GoogleIcon} style={{ width: 17, height: 17 }} />,
+    text: "Continue with Google",
+    style: { width: 250 }
   },
 };

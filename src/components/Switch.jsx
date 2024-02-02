@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Pressable, StyleSheet } from "react-native-web";
+import { PropTypes } from "prop-types";
 import colors from "../themes/colors";
 
 const Switch = ({ style = {}, selected = false, onChange }) => {
@@ -33,5 +34,11 @@ const sty = StyleSheet.create({
 		position: "absolute",
 	},
 });
+
+Switch.propTypes = {
+	style: PropTypes.object,
+	onChange: PropTypes.func,
+	selected: PropTypes.bool,
+};
 
 export default Switch;

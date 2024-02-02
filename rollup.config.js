@@ -1,7 +1,7 @@
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import babel from '@rollup/plugin-babel';
-import { terser } from 'rollup-plugin-terser';
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import babel from "@rollup/plugin-babel";
+import { terser } from "rollup-plugin-terser";
 import fs from "fs";
 
 const getFiles = (entry, extensions = [], excludeExtensions = []) => {
@@ -20,8 +20,9 @@ const getFiles = (entry, extensions = [], excludeExtensions = []) => {
       return;
     }
 
-    if (!excludeExtensions.some((exclude) => dir.endsWith(exclude))
-      && extensions.some((ext) => dir.endsWith(ext))
+    if (
+      !excludeExtensions.some((exclude) => dir.endsWith(exclude)) &&
+      extensions.some((ext) => dir.endsWith(ext))
     ) {
       fileNames.push(path);
     }
@@ -30,19 +31,19 @@ const getFiles = (entry, extensions = [], excludeExtensions = []) => {
   return fileNames;
 };
 
-const extensions = ['.js', '.ts', '.jsx', '.tsx'];
+const extensions = [".js", ".ts", ".jsx", ".tsx"];
 
 export default {
   input: [
-    ...getFiles('./src/components', extensions),
-    ...getFiles('./src/themes', extensions),
-    ...getFiles('./src/utils', extensions),
+    ...getFiles("./src/components", extensions),
+    ...getFiles("./src/themes", extensions),
+    ...getFiles("./src/utils", extensions),
   ],
   output: {
-    dir: 'dist',
-    format: 'esm',
+    dir: "dist",
+    format: "esm",
     preserveModules: true,
-    preserveModulesRoot: 'src',
+    preserveModulesRoot: "src",
     sourcemap: true,
   },
   plugins: [
@@ -50,10 +51,17 @@ export default {
     commonjs(),
     terser(),
     babel({
-     babelHelpers: 'bundled',
-     presets: ['@babel/preset-react'],
-     extensions: ['.js', '.jsx']
-  }),
+      babelHelpers: "bundled",
+      presets: ["@babel/preset-react"],
+      extensions: [".js", ".jsx"],
+    }),
   ],
-  external: ['react', 'react-dom', 'prop-types', 'react-native-web', 'lucide-react'],
+  external: [
+    "react",
+    "react-dom",
+    "prop-types",
+    "react-native-web",
+    "lucide-react",
+    "moment",
+  ],
 };

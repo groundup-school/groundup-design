@@ -1,9 +1,10 @@
-import Button from '../components/Button';
+import React from "react";
+import Input from '../components/Input';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: 'Components/Buttons/Button',
-  component: Button,
+  title: 'Components/Inputs/Input',
+  component: Input,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
@@ -14,9 +15,9 @@ export default {
 };
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary = {
+export const Default = {
   args: {
-    text: "Press Me",
-    style: { width: 100 }
+    placeholder: "Enter full name",
+    style: { width: 200 }
   },
 };

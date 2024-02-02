@@ -25,6 +25,7 @@ const sty = StyleSheet.create({
 		borderRadius: BORDER_RADIUS,
 		borderWidth: 1,
 		paddingLeft: 10,
+		color: colors.text
 	},
 });
 
