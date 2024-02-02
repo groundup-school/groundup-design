@@ -1,6 +1,6 @@
 {
   "name": "groundup-design",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React component and utils library for Groundup",
   "author": {
     "name": "Deepak"
@@ -48,7 +48,6 @@
     "sb": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build": "rollup -c",
-    "pub": "npm publish",
     "chromatic": "npx chromatic --project-token=chpt_2964a96761e4665"
   },
   "resolutions": {
