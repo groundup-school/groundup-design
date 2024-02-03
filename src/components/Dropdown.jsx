@@ -17,7 +17,11 @@ function Dropdown({
   onSelect = null,
 }) {
   const menuRef = React.useRef();
-  const color = selected?.label ? colors.text : colors.placeholder;
+  const currentItem = React.useMemo(() => {
+    const ci = options.find(op => op.value === selected);
+    return ci;
+  }, [selected, options]);
+  const color = currentItem?.label ? colors.text : colors.placeholder;
   const showOptions = (nativeEvent) => {
     const element = Menu.transfromView(nativeEvent);
     menuRef.current.show(options, element, onSelect);
@@ -26,7 +30,7 @@ function Dropdown({
     <>
       <Pressable onPress={showOptions} style={[sty.main, style]}>
         <Text style={[sty.label, { color }]}>
-          {selected?.label || placeholder}
+          {currentItem?.label || placeholder}
         </Text>
         <View style={sty.icon}>
           <ChevronDown size={12} color={color} />
