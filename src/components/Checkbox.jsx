@@ -5,7 +5,7 @@ import { BORDER_RADIUS } from "../utils/constants";
 import { PropTypes } from 'prop-types';
 import colors from "../themes/colors";
 
-const Checkbox = ({ checked = false, style = {}, size = 20 }) => {
+const Checkbox = ({ onChange, checked = false, style = {}, size = 20 }) => {
 	const [isHovered, setIsHovered] = React.useState(false);
 	const [borderColor, backgroundColor] = React.useMemo(() => {
 		if (checked) {
@@ -32,7 +32,8 @@ const Checkbox = ({ checked = false, style = {}, size = 20 }) => {
 Checkbox.propTypes = {
 	checked: PropTypes.bool,
 	style: PropTypes.object,
-	size: PropTypes.number
+	size: PropTypes.number,
+	onChange: PropTypes.func
 }
 
 const sty = StyleSheet.create({
