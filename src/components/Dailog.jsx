@@ -35,11 +35,12 @@ const style = StyleSheet.create({
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
-		backgroundColor: colors.bgTrans
+		backgroundColor: colors.bgTrans,
 	},
 	content: {
 		backgroundColor: colors.bgColor,
 		borderRadius: 10,
+		overflow: 'hidden'
 	},
 	header: {
 		height: 50,

@@ -5,7 +5,7 @@ import { BORDER_RADIUS } from "../utils/constants";
 import { PropTypes } from "prop-types";
 import colors from "../themes/colors";
 
-const Checkbox = ({
+const CheckboxLabel = ({
 	onChange,
 	text = "",
 	checked = false,
@@ -45,7 +45,7 @@ const Checkbox = ({
 	);
 };
 
-Checkbox.propTypes = {
+CheckboxLabel.propTypes = {
 	checked: PropTypes.bool,
 	style: PropTypes.object,
 	size: PropTypes.number,
@@ -72,4 +72,4 @@ const sty = StyleSheet.create({
 	},
 });
 
-export default Checkbox;
+export default CheckboxLabel;

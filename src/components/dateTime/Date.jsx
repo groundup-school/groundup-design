@@ -164,6 +164,10 @@ export default class Date extends Component {
 		}else if(mode === YEAR_MODE){
 			const year = direction === 1 ? years[years.length - 1] : years[0];
 			this.setYears(year, direction);
+		} else if(mode === MONTH_MODE) {
+			this.setState({
+				currentYear: this.state.currentYear + direction
+			})
 		}
 	};
 

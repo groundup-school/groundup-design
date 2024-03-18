@@ -38,6 +38,7 @@ export default {
     ...getFiles("./src/components", extensions),
     ...getFiles("./src/themes", extensions),
     ...getFiles("./src/utils", extensions),
+    ...getFiles("./src/hooks", extensions),
   ],
   output: {
     dir: "dist",

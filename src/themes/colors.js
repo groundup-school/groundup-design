@@ -14,6 +14,8 @@ const colors = {
 	primaryLight: process.env.REACT_APP_PRIMARY_LIGHT_COLOR || "#EBEAFD",
 	safeGreen: process.env.REACT_APP_SAFE_GREEN_COLOR || "#009855",
 
+	alertRed: process.env.REACT_APP_ALERT_RED_COLOR || "#b80f48",
+
 	bgTrans: process.env.REACT_APP_BG_TRANS_COLOR || "#000000C4",
 	transparent: "#00000000"
 }

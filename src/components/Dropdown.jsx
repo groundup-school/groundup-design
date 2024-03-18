@@ -15,20 +15,41 @@ function Dropdown({
   style = {},
   selected = null,
   onSelect = null,
+  onNoOptions = null,
 }) {
   const menuRef = React.useRef();
   const currentItem = React.useMemo(() => {
-    const ci = options.find(op => op.value === selected);
+    const ci = options.find((op) => op.value === selected);
     return ci;
   }, [selected, options]);
-  const color = currentItem?.label ? colors.text : colors.placeholder;
+  const [isHovered, setIsHovered] = React.useState(false);
+  const [isActive, setIsActive] = React.useState(false);
+  const [color, borderColor] = React.useMemo(() => {
+    if (isHovered || isActive) {
+      return [colors.primary, colors.primary];
+    }
+    return [
+      currentItem?.label ? colors.text : colors.placeholder,
+      colors.border,
+    ];
+  }, [isHovered, isActive, currentItem?.label]);
   const showOptions = (nativeEvent) => {
+    if (!options?.length && onNoOptions) {
+      onNoOptions();
+      return;
+    }
+    setIsActive(true);
     const element = Menu.transfromView(nativeEvent);
     menuRef.current.show(options, element, onSelect);
   };
   return (
     <>
-      <Pressable onPress={showOptions} style={[sty.main, style]}>
+      <Pressable
+        onHoverIn={() => setIsHovered(true)}
+        onHoverOut={() => setIsHovered(false)}
+        onPress={showOptions}
+        style={[sty.main, style, { borderColor }]}
+      >
         <Text style={[sty.label, { color }]}>
           {currentItem?.label || placeholder}
         </Text>
@@ -36,7 +57,7 @@ function Dropdown({
           <ChevronDown size={12} color={color} />
         </View>
       </Pressable>
-      <Menu ref={menuRef} />
+      <Menu onClose={() => setIsActive(false)} ref={menuRef} />
     </>
   );
 }

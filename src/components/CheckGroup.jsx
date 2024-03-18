@@ -49,13 +49,14 @@ const CheckGroup = ({
 	);
 };
 
-const Chip = ({ selected, label, iconSize }) => {
+const Chip = ({ onPress, selected, label, iconSize }) => {
 	const [isHovered, setIsHovered] = React.useState(false);
 	const isActive = selected || isHovered;
 	const borderColor = isActive ? colors.primary : colors.border;
 	const color = isActive ? colors.primary : colors.placeholder;
 	return (
 		<Pressable
+			onPress={onPress}
 			onHoverIn={() => setIsHovered(true)}
 			onHoverOut={() => setIsHovered(false)}
 			style={[style.chip, { borderColor }]}

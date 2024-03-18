@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native-web";
 import OverlayPortal from "./OverlayPortal.jsx";
 import ZoomIn from "./ZoomIn.jsx";
 import {
-  BORDER_RADIUS,  
+  BORDER_RADIUS,
   WINDOW_HALF_HEIGHT,
   WINDOW_HALF_WIDTH,
 } from "../utils/constants";
@@ -21,7 +21,7 @@ export default class ContextMenu extends Component {
         elm.clientWidth,
         elm.clientHeight,
         nativeEvent.clientX,
-        nativeEvent.clientY
+        nativeEvent.clientY,
       );
     };
     const obj = {
@@ -66,8 +66,7 @@ export default class ContextMenu extends Component {
     this.animator?.reset();
     this.animator?.measure((ofx, ofy, ow, oh) => {
       element?.measure((fx, fy, width, height, left, top) => {
-        const topAdjusted =
-          top > WINDOW_HALF_HEIGHT ? top - oh : top + height;
+        const topAdjusted = top > WINDOW_HALF_HEIGHT ? top - oh : top + height;
         const leftAdjusted =
           left > WINDOW_HALF_WIDTH ? left - POPUP_WIDTH : left;
         let originX = left > WINDOW_HALF_WIDTH ? "right" : "left";
@@ -82,7 +81,7 @@ export default class ContextMenu extends Component {
             position,
             visible: true,
           },
-          this.enter
+          this.enter,
         );
       });
     });
@@ -103,6 +102,9 @@ export default class ContextMenu extends Component {
     }
     if (this.animator) {
       this.animator?.easeOut();
+    }
+    if (this?.props?.onClose) {
+      this?.props?.onClose();
     }
     setTimeout(() => {
       this.setState({
@@ -137,16 +139,12 @@ export default class ContextMenu extends Component {
             >
               {options.map((option, index) => (
                 <TouchableOpacity
-                  onPress={() =>
-                    this.handleSelect(option, index)
-                  }
+                  onPress={() => this.handleSelect(option, index)}
                   key={index}
                   activeOpacity={0.5}
                   style={style.option}
                 >
-                  <Text style={style.label}>
-                    {option.label}
-                  </Text>
+                  <Text style={style.label}>{option.label}</Text>
                 </TouchableOpacity>
               ))}
             </ZoomIn>
@@ -166,7 +164,7 @@ const style = StyleSheet.create({
     left: 0,
     cursor: "default",
     backgroundColor: colors.transparent,
-    zIndex: 9999
+    zIndex: 9999,
   },
   menu: {
     width: POPUP_WIDTH,
@@ -181,7 +179,7 @@ const style = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     flexDirection: "row",
-  },  
+  },
   label: {
     fontWeight: "500",
     fontSize: 14,
